@@ -2,3 +2,11 @@ __pycache__
 *.pyc
 outputs
 plan_outputs
+# Big folders we don't want to track
+datasets/
+models/
+osf_zips/
+checkpoints/
+outputs/
+env/
+__MACOSX/

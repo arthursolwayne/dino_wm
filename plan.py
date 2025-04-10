@@ -20,6 +20,8 @@ from custom_resolvers import replace_slash
 from preprocessor import Preprocessor
 from planning.evaluator import PlanEvaluator
 from utils import cfg_to_dict, seed
+from setproctitle import setproctitle
+setproctitle("dino-wm plan")
 
 warnings.filterwarnings("ignore")
 log = logging.getLogger(__name__)
@@ -429,7 +431,7 @@ class DummyWandbRun:
 
 def planning_main(cfg_dict):
     output_dir = cfg_dict["saved_folder"]
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu") # changed
     if cfg_dict["wandb_logging"]:
         wandb_run = wandb.init(
             project=f"plan_{cfg_dict['planner']['name']}", config=cfg_dict
